@@ -1,0 +1,66 @@
+static def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+}
+
+ext.addRepos = this.&addRepos
+
+//region Build versions
+def build_versions = [:]
+
+build_versions.min_sdk = 21
+build_versions.target_sdk = 30
+build_versions.compile_sdk = 30
+
+ext.build_versions = build_versions
+//endregion
+
+def versions = [:]
+
+ext.deps = [:]
+def deps = [:]
+
+//region Gradle
+def gradle = [:]
+
+versions.android_plugin = '4.0.1'
+
+gradle.android_plugin = "com.android.tools.build:gradle:$versions.android_plugin"
+
+deps.gradle = gradle
+//endregion
+
+//region Kotlin
+def kotlin = [:]
+
+versions.kotlin = "1.4.10"
+
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+
+deps.kotlin = kotlin
+//endregion
+
+//regin Third party
+
+def google = [:]
+
+versions.material = "1.2.1"
+
+google.material = "com.google.android.material:material:$versions.material"
+
+deps.google = google
+
+//endregion
+
+//region Bintray
+def bintray = [:]
+
+versions.bintray_plugin = "1.8.5"
+
+bintray.gradle_bintray_plugin = "com.jfrog.bintray.gradle:gradle-bintray-plugin:$versions.bintray_plugin"
+
+deps.bintray = bintray
+//endregion
+
+ext.deps = deps

@@ -1,0 +1,2 @@
+include ':edge-to-edge-decorator', ':sample'
+rootProject.name = "edge-to-edge-decorator"
