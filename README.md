@@ -50,6 +50,65 @@
 |:--------------------------------------------------:|:--------------------------------------------------:|:--------------------------------------------------:|
 |             Android 5.0 (API level 21)             |             Android 7.1 (API level 25)             |              Android 11 (API level 30)             |
 
+## Как подключить?
+
+### 1. Подключение библиотеки
+
+```groovy
+dependencies {
+    implementation 'com.redmadrobot:edge-to-edge-decorator:1.0.0'
+}
+```
+
+### 2. Тема приложения должна наследоваться от MaterialComponents
+
+Для определение атрибутов темы приложения в простом режиме необходимо, чтобы тема вашего приложения
+наследовалась от `Theme.MaterialComponents.*`.
+
+Также стоит явно указать нужный цвет фона для `AppBarLayout` и `background` приложения:
+
+```xml
+<item name="colorPrimary">@color/colorPrimary</item> <!-- or colorPrimarySurface -->
+<item name="android:windowBackground">@color/windowBackground</item>
+```
+
+Или указать свои значения программно в параметрах `appBarColorAttr` и `backgroundColorAttr`.
+
+### 3. Выключение режима edge to edge
+
+Если на каком-то экране вы захотите выключить edge to edge мод (параметр `isEdgeToEdgeEnabled = false`),
+то в теме приложения следует указать цвета `statusBar` и `navigationBar`:
+
+```xml
+<item name="android:statusBarColor">@android:color/black</item>
+<item name="android:navigationBarColor">@android:color/black</item>
+```
+
+### 4. Включить или выключить флаг дополнительной контрастности для `NavigationBar`
+
+```xml
+<item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
+```
+
+Подробнее про флаг `enforceNavigationBarContrast` можно почитать в статье, которую написал [Chris Banes](https://medium.com/androiddevelopers/gesture-navigation-going-edge-to-edge-812f62e4e83e).
+
+### 5. Настройка утилиты под особенности проекта
+
+Настройка параметров и активация режима edge to edge
+```kotlin
+EdgeToEdgeDecorator
+    .updateConfig {
+        // custom config
+        isEdgeToEdgeEnabled = true
+        appBarColorAttr = R.color.colorPrimary
+        backgroundColorAttr = R.color.windowBackground
+    }
+    .apply(context, window)
+```
+
+### 6. Profit!
+
+
 ## Настройки edge to edge decorator
 
 Утилита может работать в 3-х режимах:
@@ -87,7 +146,7 @@ override val edgeToEdgeCompatibilityManager = EdgeToEdgeDecorator.updateConfig {
 }
 ```
 
-### Полное описание параметров можно найти в классе DefaultConfig
+### Полное описание параметров можно найти в классе [DefaultConfig](https://github.com/RedMadRobot/edge-to-edge-decorator/blob/5776dcd5bb126bdb157f7d08d6f3fa6cfe6f4e88/edge-to-edge-decorator/src/main/java/com/redmadrobot/e2e/decorator/EdgeToEdgeDecorator.kt#L147)
 
 ```kotlin
 class DefaultConfig {
@@ -204,40 +263,22 @@ class DefaultConfig {
 Утилита использует следующие зависимости:
 
 ```kotlin
-implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version") // Kotlin
+implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.10") // Kotlin
 implementation("com.google.android.material:material:1.2.1") // Material components
 ```
 
-## Настройка проекта
+## Feedback
 
-### 1. Тема приложения должна наследоваться от MaterialComponents
+Если вы столкнулись с какими-либо ошибками или у вас есть полезные предложения 
+по улучшению этой библиотеки, не стесняйтесь создавать 
+[issue] (https://github.com/RedMadRobot/edge-to-edge-decorator/issues).
 
-Для определение атрибутов темы приложения в простом режиме необходимо, чтобы тема вашего приложения
-наследовалась от `Theme.MaterialComponents.*`.
+## LICENSE
 
-Также стоит явно указать нужный цвет фона для `AppBarLayout` и `background` приложения:
-
-```xml
-<item name="colorPrimary">@color/colorPrimary</item> <!-- or colorPrimarySurface -->
-<item name="android:windowBackground">@color/windowBackground</item>
-```
-
-Или указать свои значения программно в параметрах `appBarColorAttr` и `backgroundColorAttr`.
-
-### 2. Выключение режима edge to edge
-
-Если на каком-то экране вы захотите выключить edge to edge мод (параметр `isEdgeToEdgeEnabled = false`),
-то в теме приложения следует указать цвета `statusBar` и `navigationBar`:
-
-```xml
-<item name="android:statusBarColor">@android:color/black</item>
-<item name="android:navigationBarColor">@android:color/black</item>
-```
-
-### 3. Включить или выключить флаг дополнительной контрастности для `NavigationBar`
-
-```xml
-<item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
-```
-
-Подробнее про флаг `enforceNavigationBarContrast` можно почитать в статье, которую написал [Chris Banes](https://medium.com/androiddevelopers/gesture-navigation-going-edge-to-edge-812f62e4e83e).
+>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+>OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+>MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+>IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+>CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+>TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+>SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
