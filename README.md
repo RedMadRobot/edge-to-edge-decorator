@@ -9,7 +9,7 @@
 
 ## Проблема
 
-С выходом андроид 10, компания Google представила жестовую навигацию и edge to edge режим. Этот режим означает, что
+С выходом Android 10, компания Google представила жестовую навигацию и edge to edge режим. Этот режим означает, что
 контент отрисовывается под системными компонентами `statusBar` и `navigationBar`, и телефон становится
 визуально более безрамочным, добавляется поддержка вырезов для камер, а сами компоненты окрашиваются в прозрачный цвет.
 
@@ -54,9 +54,16 @@
 
 ### 1. Подключение библиотеки
 
+Groovy
 ```groovy
 dependencies {
     implementation 'com.redmadrobot:edge-to-edge-decorator:1.0.0'
+}
+```
+Kotlin
+```kotlin
+dependencies {
+    implementation("com.redmadrobot:edge-to-edge-decorator:1.0.0")
 }
 ```
 
@@ -76,7 +83,7 @@ dependencies {
 
 ### 3. Выключение режима edge to edge
 
-Если на каком-то экране вы захотите выключить edge to edge мод (параметр `isEdgeToEdgeEnabled = false`),
+Если на каком-то экране вы захотите выключить режим edge to edge (параметр `isEdgeToEdgeEnabled = false`),
 то в теме приложения следует указать цвета `statusBar` и `navigationBar`:
 
 ```xml
