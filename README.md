@@ -46,9 +46,9 @@
 
 ### Пример работы утилиты
 
-| <img src="images/sample_21_api.png" width="200" /> | <img src="images/sample_25_api.png" width="200" /> | <img src="images/sample_30_api.png" width="178" /> |
-|:--------------------------------------------------:|:--------------------------------------------------:|:--------------------------------------------------:|
-|             Android 5.0 (API level 21)             |             Android 7.1 (API level 25)             |              Android 11 (API level 30)             |
+| <img src="images/sample_21_api.gif" width="200" /> | <img src="images/sample_25_api.gif" width="200" /> | <img src="images/sample_28_api.gif" width="174" /> | <img src="images/sample_30_api.gif" width="178" /> |
+|:--------------------------------------------------:|:--------------------------------------------------:|:--------------------------------------------------:|----------------------------------------------------|
+|             Android 5.0 (API level 21)             |             Android 7.1 (API level 25)             |              Android 9 (API level 28)              |              Android 11 (API level 30)             |
 
 ## Как подключить?
 
