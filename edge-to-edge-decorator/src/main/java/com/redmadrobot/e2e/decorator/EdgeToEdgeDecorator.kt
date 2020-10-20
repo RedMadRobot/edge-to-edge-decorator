@@ -141,7 +141,14 @@ object EdgeToEdgeDecorator {
 
 
     private fun isColorLight(@ColorInt color: Int): Boolean {
-        return color != Color.TRANSPARENT && ColorUtils.calculateLuminance(color) > 0.5
+        return if (Color.alpha(color) != 255) {
+            color != Color.TRANSPARENT && ColorUtils.calculateLuminance(color) > 0.5
+        } else {
+            val contrastWithWhiteText = ColorUtils.calculateContrast(Color.WHITE, color)
+            val contrastWithBlackText = ColorUtils.calculateContrast(Color.BLACK, color)
+
+            contrastWithBlackText > contrastWithWhiteText
+        }
     }
 
     class DefaultConfig {
