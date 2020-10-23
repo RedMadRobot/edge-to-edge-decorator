@@ -271,7 +271,7 @@ implementation("com.google.android.material:material:1.2.1") // Material compone
 
 Если вы столкнулись с какими-либо ошибками или у вас есть полезные предложения 
 по улучшению этой библиотеки, не стесняйтесь создавать 
-[issue] (https://github.com/RedMadRobot/edge-to-edge-decorator/issues).
+[issue](https://github.com/RedMadRobot/edge-to-edge-decorator/issues).
 
 ## LICENSE
 
