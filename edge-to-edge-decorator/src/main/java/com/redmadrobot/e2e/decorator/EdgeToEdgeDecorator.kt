@@ -14,7 +14,7 @@ import androidx.core.graphics.ColorUtils
 import com.google.android.material.color.MaterialColors
 
 /**
- * Класс отвечает за окрашивание statusBar и navigationBar для поддержания edge to edge режима.
+ * Класс отвечает за окрашивание statusBar и navigationBar для поддержания edge-to-edge режима.
  * Концепция основана на WindowPreferencesManager из
  * [приложения-каталога материальных комнонентов](https://github.com/material-components/material-components-android/blob/master/catalog/java/io/material/catalog/windowpreferences/WindowPreferencesManager.java)
  */
@@ -27,7 +27,7 @@ object EdgeToEdgeDecorator {
     private var config = DefaultConfig()
 
     /**
-     * Метод позволяет модифицировать параметры работы edge to edge режима.
+     * Метод позволяет модифицировать параметры работы edge-to-edge режима.
      *
      * @see DefaultConfig
      */
@@ -38,7 +38,7 @@ object EdgeToEdgeDecorator {
     }
 
     /**
-     * Метод активирует edge to edge с выбранными параметрами.
+     * Метод активирует edge-to-edge с выбранными параметрами.
      *
      * @see [updateConfig]
      */
@@ -154,12 +154,12 @@ object EdgeToEdgeDecorator {
     class DefaultConfig {
 
         /**
-         * Флаг отвечает за включение/выключение edge to edge режима.
+         * Флаг отвечает за включение/выключение edge-to-edge режима.
          */
         var isEdgeToEdgeEnabled = true
 
         /**
-         * В простом edge to edge режиме. Цвет иконок statusBar устанавливается в соответствии
+         * В простом edge-to-edge режиме. Цвет иконок statusBar устанавливается в соответствии
          * с цветом [com.google.android.material.appbar.AppBarLayout].
          *
          * Значение по умолчанию равно [R.attr.colorPrimarySurface].
@@ -176,7 +176,7 @@ object EdgeToEdgeDecorator {
         var appBarColorAttr = R.attr.colorPrimarySurface
 
         /**
-         * В простом edge to edge режиме. Цвет иконок navigationBar устанавливается в соответствии
+         * В простом edge-to-edge режиме. Цвет иконок navigationBar устанавливается в соответствии
          * с цветом [android.R.attr.windowBackground]
          *
          * Значение по умолчанию равно [android.R.attr.windowBackground]
@@ -194,7 +194,7 @@ object EdgeToEdgeDecorator {
 
         /**
          * Если не подходит простой режим, например, для случаев, когда на экране нет
-         * [com.google.android.material.appbar.AppBarLayout], можно активировать кастомный режим edge to edge.
+         * [com.google.android.material.appbar.AppBarLayout], можно активировать кастомный режим edge-to-edge.
          *
          * Для этого нужно передать конкретный цвет контента под statusBar, например, [R.color.windowBackground]
          *
@@ -205,7 +205,7 @@ object EdgeToEdgeDecorator {
 
         /**
          * Если не подходит простой режим, например, под navigationBar должен отрисовываться другой контет
-         * или [BottomNavigationMenu], можно активировать кастомный режим edge to edge.
+         * или [BottomNavigationMenu], можно активировать кастомный режим edge-to-edge.
          *
          * Для этого нужно передать конкретный цвет контента под navigationBar, например, [R.color.bottomMenu]
          *
@@ -237,10 +237,10 @@ object EdgeToEdgeDecorator {
         var navBarEdgeToEdgeColor = Color.TRANSPARENT
 
         /**
-         * Цвет иконок для statusBar можно менять только с 23 API. Для андроида с API ниже 23
+         * Цвет иконок для statusBar можно менять только с 23 API. Для Android с API ниже 23
          * используется цвет, который будет хорошо контрастировать с белыми иконками.
          *
-         * По умолчанию, для сохранения эффекта edge to edge, используется черный цвет с 50% прозрачностью.
+         * По умолчанию, для сохранения эффекта edge-to-edge, используется черный цвет с 50% прозрачностью.
          *
          * @see navBarCompatibilityColor
          */
@@ -248,10 +248,10 @@ object EdgeToEdgeDecorator {
         var statusBarCompatibilityColor = ColorUtils.setAlphaComponent(Color.BLACK, 128)
 
         /**
-         * Цвет иконок для navigationBar можно менять только с 26 API. Для андроида с API ниже 26
+         * Цвет иконок для navigationBar можно менять только с 26 API. Для Android с API ниже 26
          * используется цвет, который будет хорошо контрастировать с белыми иконками.
          *
-         * По умолчанию, для сохранения эффекта edge to edge, используется черный цвет с 50% прозрачностью.
+         * По умолчанию, для сохранения эффекта edge-to-edge, используется черный цвет с 50% прозрачностью.
          *
          * @see statusBarCompatibilityColor
          */

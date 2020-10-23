@@ -2,24 +2,24 @@
 
 ## Описание
 
-**Edge to edge decorator** - это класс-утилита, которая отвечает за окрашивание `statusBar` и `navigationBar` для поддержания **edge to edge (e2e)** режима.  
+**Edge-to-edge-decorator** - это класс-утилита, которая отвечает за окрашивание `statusBar` и `navigationBar` для поддержания **edge-to-edge (e2e)** режима.  
 
 Концепция основана на [WindowPreferencesManager](https://github.com/material-components/material-components-android/blob/master/catalog/java/io/material/catalog/windowpreferences/WindowPreferencesManager.java)
 из [приложения-каталога материальных комнонентов](https://github.com/material-components/material-components-android/tree/master/catalog).
 
 ## Проблема
 
-С выходом андроид 10, компания Google представила жестовую навигацию и edge to edge режим. Этот режим означает, что
+С выходом Android 10, компания Google представила жестовую навигацию и edge-to-edge режим. Этот режим означает, что
 контент отрисовывается под системными компонентами `statusBar` и `navigationBar`, и телефон становится
 визуально более безрамочным, добавляется поддержка вырезов для камер, а сами компоненты окрашиваются в прозрачный цвет.
 
-Для того, чтобы добавить поддержку edge to edge в ваше приложение, нужно сделать 2 вещи:
+Для того, чтобы добавить поддержку edge-to-edge в ваше приложение, нужно сделать 2 вещи:
 
 ### 1. Добавить поддержку системных отступов (insets)
 
 Вы получаете размер системных компонентов и вставляете их
 как `padding` в верстку для ваших компонентов. Insets поддерживается всеми версиями Android OS,
-что позволяет реализовать концепцию edge to edge для всех пользователей.
+что позволяет реализовать концепцию edge-to-edge для всех пользователей.
 
 Подробности можно почитать или посмотреть в [докладе Константина Цховребова](https://habr.com/ru/company/oleg-bunin/blog/488196/).  
 Для реализации можно использовать библиотеку от Chris Banes [Insetter](https://github.com/chrisbanes/insetter).
@@ -42,7 +42,7 @@
 * с версии 8.0 можно выбрать белый или черный цвет иконок для обоих компонентов.
 Поэтому наложения можно убрать полностью.
   
-Подробнее про edge to edge и жестовую навигацию можно почитать в статье, которую написал [Chris Banes](https://medium.com/androiddevelopers/gesture-navigation-going-edge-to-edge-812f62e4e83e).
+Подробнее про edge-to-edge и жестовую навигацию можно почитать в статье, которую написал [Chris Banes](https://medium.com/androiddevelopers/gesture-navigation-going-edge-to-edge-812f62e4e83e).
 
 ### Пример работы утилиты
 
@@ -56,7 +56,7 @@
 
 ```groovy
 dependencies {
-    implementation 'com.redmadrobot:edge-to-edge-decorator:1.0.0'
+    implementation("com.redmadrobot:edge-to-edge-decorator:1.0.0")
 }
 ```
 
@@ -74,9 +74,9 @@ dependencies {
 
 Или указать свои значения программно в параметрах `appBarColorAttr` и `backgroundColorAttr`.
 
-### 3. Выключение режима edge to edge
+### 3. Выключение режима edge-to-edge
 
-Если на каком-то экране вы захотите выключить edge to edge мод (параметр `isEdgeToEdgeEnabled = false`),
+Если на каком-то экране вы захотите выключить режим edge-to-edge (параметр `isEdgeToEdgeEnabled = false`),
 то в теме приложения следует указать цвета `statusBar` и `navigationBar`:
 
 ```xml
@@ -94,7 +94,8 @@ dependencies {
 
 ### 5. Настройка утилиты под особенности проекта
 
-Настройка параметров и активация режима edge to edge
+Настройка параметров и активация режима edge-to-edge
+
 ```kotlin
 EdgeToEdgeDecorator
     .updateConfig {
@@ -108,8 +109,7 @@ EdgeToEdgeDecorator
 
 ### 6. Profit!
 
-
-## Настройки edge to edge decorator
+## Настройки edge-to-edge-decorator
 
 Утилита может работать в 3-х режимах:
 
@@ -117,14 +117,14 @@ EdgeToEdgeDecorator
     * Цвет `statusBar` и `navigationBar` - прозрачный;
     * Цвет иконок `statusBar` определяется по цвету `AppBarLayout`. Параметр `appBarColorAttr` (по умолчанию `R.attr.colorPrimarySurface`)
     * Цвет иконок `navigationBar` определяется по цвету фона вашего приложения. Параметр `backgroundColorAttr` (по умолчанию `android.R.attr.windowBackground`).
-    * Активируется режим edge to edge.  
+    * Активируется режим edge-to-edge.  
     В `window.decorView.systemUiVisibility` устанавливаются флаги `View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE`)
 
 2. Кастомный - на экране нет `AppBarLayout` и/или под `navigationBar` должен отрисовываться другой контент, например `BottomNavigationMenu`.
     * Цвет `statusBar` и `navigationBar` - прозрачный;
     * Цвет иконок `statusBar` определяется по цвету, указанному в параметре `contentUnderStatusBarCustomColor`.
     * Цвет иконок `navigationBar` определяется по цвету, указанному в параметре `contentUnderNavBarCustomColor`.
-    * Активируется режим edge to edge.
+    * Активируется режим edge-to-edge.
 
 3. Режим дополнителькой контрастности.  
 Если на экране цвет контента определить нельзя, то для `statusBar` и `navigationBar` можно указать конкретный цвет вместо прозрачного.
@@ -152,12 +152,12 @@ override val edgeToEdgeCompatibilityManager = EdgeToEdgeDecorator.updateConfig {
 class DefaultConfig {
 
     /**
-     * Флаг отвечает за включение/выключение edge to edge режима.
+     * Флаг отвечает за включение/выключение edge-to-edge режима.
      */
     var isEdgeToEdgeEnabled = true
 
     /**
-     * В простом edge to edge режиме. Цвет иконок statusBar устанавливается в соответствии
+     * В простом edge-to-edge режиме. Цвет иконок statusBar устанавливается в соответствии
      * с цветом [com.google.android.material.appbar.AppBarLayout].
      *
      * Значение по умолчанию равно [R.attr.colorPrimarySurface].
@@ -174,7 +174,7 @@ class DefaultConfig {
     var appBarColorAttr = R.attr.colorPrimarySurface
 
     /**
-     * В простом edge to edge режиме. Цвет иконок navigationBar устанавливается в соответствии
+     * В простом edge-to-edge режиме. Цвет иконок navigationBar устанавливается в соответствии
      * с цветом [android.R.attr.windowBackground]
      *
      * Значение по умолчанию равно [android.R.attr.windowBackground]
@@ -192,7 +192,7 @@ class DefaultConfig {
 
     /**
      * Если не подходит простой режим, например, для случаев, когда на экране нет
-     * [com.google.android.material.appbar.AppBarLayout], можно активировать кастомный режим edge to edge.
+     * [com.google.android.material.appbar.AppBarLayout], можно активировать кастомный режим edge-to-edge.
      *
      * Для этого нужно передать конкретный цвет контента под statusBar, например, [R.color.windowBackground]
      *
@@ -203,7 +203,7 @@ class DefaultConfig {
 
     /**
      * Если не подходит простой режим, например, под navigationBar должен отрисовываться другой контет
-     * или [BottomNavigationMenu], можно активировать кастомный режим edge to edge.
+     * или [BottomNavigationMenu], можно активировать кастомный режим edge-to-edge.
      *
      * Для этого нужно передать конкретный цвет контента под navigationBar, например, [R.color.bottomMenu]
      *
@@ -235,10 +235,10 @@ class DefaultConfig {
     var navBarEdgeToEdgeColor = Color.TRANSPARENT
 
     /**
-     * Цвет иконок для statusBar можно менять только с 23 API. Для андроида с API ниже 23
+     * Цвет иконок для statusBar можно менять только с 23 API. Для Android с API ниже 23
      * используется цвет, который будет хорошо контрастировать с белыми иконками.
      *
-     * По умолчанию, для сохранения эффекта edge to edge, используется черный цвет с 50% прозрачностью.
+     * По умолчанию, для сохранения эффекта edge-to-edge, используется черный цвет с 50% прозрачностью.
      *
      * @see navBarCompatibilityColor
      */
@@ -246,10 +246,10 @@ class DefaultConfig {
     var statusBarCompatibilityColor = ColorUtils.setAlphaComponent(Color.BLACK, 128)
 
     /**
-     * Цвет иконок для navigationBar можно менять только с 26 API. Для андроида с API ниже 26
+     * Цвет иконок для navigationBar можно менять только с 26 API. Для Android с API ниже 26
      * используется цвет, который будет хорошо контрастировать с белыми иконками.
      *
-     * По умолчанию, для сохранения эффекта edge to edge, используется черный цвет с 50% прозрачностью.
+     * По умолчанию, для сохранения эффекта edge-to-edge, используется черный цвет с 50% прозрачностью.
      *
      * @see statusBarCompatibilityColor
      */
@@ -269,9 +269,9 @@ implementation("com.google.android.material:material:1.2.1") // Material compone
 
 ## Feedback
 
-Если вы столкнулись с какими-либо ошибками или у вас есть полезные предложения 
-по улучшению этой библиотеки, не стесняйтесь создавать 
-[issue] (https://github.com/RedMadRobot/edge-to-edge-decorator/issues).
+Если вы столкнулись с какими-либо ошибками или у вас есть полезные предложения
+по улучшению этой библиотеки, не стесняйтесь создавать
+[issue](https://github.com/RedMadRobot/edge-to-edge-decorator/issues).
 
 ## LICENSE
 
